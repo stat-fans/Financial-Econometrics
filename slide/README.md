@@ -1,1 +1,0 @@
-Slide for my class
