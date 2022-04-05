@@ -1,2 +1,3 @@
-# Financial-Econometrics-1
-Slides and homework for Financial Econometrics 1
+# Financial-Econometrics
+Slides and homework for Financial Econometrics
+Draft of my textbook: Financial Econometrics
