@@ -7,3 +7,7 @@ jackknife, cluster(schoolid) nodots: reg testscore tracking girl agetest
 //Bootstrap se
 reg testscore tracking girl agetest, vce(bootstrap, reps(500))
 bootstrap, reps(500): reg testscore tracking girl agetest
+
+//Bootstrap ci
+estat bootstrap, percentile
+estat bootstrap, all
