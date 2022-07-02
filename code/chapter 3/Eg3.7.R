@@ -1,6 +1,6 @@
 #数据预处理
 library(tidyverse)
-cps09mar_subset <- read_dta("~/cps09mar_subset.dta")
+cps09mar_subset <- haven::read_dta("~/cps09mar_subset.dta")
 reg_data <- cps09mar_subset %>% 
   dplyr::mutate(experience=age-education-6,lw=log(earnings)) %>%
   dplyr::mutate(exp2=experience^2/100) %>%
