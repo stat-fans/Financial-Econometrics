@@ -22,3 +22,6 @@ estat bootstrap, bca
 
 bootstrap, reps(500) bca seed(123): reg testscore tracking girl agetest
 estat bootstrap, bca
+
+//Cluster Bootstrap
+reg testscore tracking girl agetest, cluster(schoolid) vce(bootstrap, reps(500))
