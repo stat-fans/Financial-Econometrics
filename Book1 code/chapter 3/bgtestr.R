@@ -1,0 +1,6 @@
+shindex <- read.table("~/上证指数收益率.csv",sep = ",",header = TRUE)
+date <- as.Date(as.character(shindex$date),format="%Y/%m/%d")
+rtn <- xts::xts(shindex$rtn,date)
+rtn_lag <- lag(rtn,1)
+mydata <- as.data.frame(rtn,rtn_lag)
+lmtest::bgtest(rtn~rtn_lag, order=10, data=mydata)
