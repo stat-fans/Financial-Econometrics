@@ -25,23 +25,26 @@ Student_t <- function(data){
 }
 #有约束回归的残差Bootstrap
 library(tidyverse)
-RR_bootstrap<-function(data){
+RR_bootstrap <- function(data){
   n = length(data)
   xx = data[1:(n-1)]
   y = data[2:n]
   b0 = mean(y - xx*0.9)
   e = y - b0 - xx*0.9
   u = sqrt((n-1)/(n-1-2))*e
+  data_star=rep(0,n)
   t_RR = lapply(
     1:B,
     function(x){
-      u_star = sample(u,size=(n-1),replace=TRUE)
-      da = arima.sim(n=n-1,list(ar = 0.9),n.start = 1,start.innov = xx[1],innov = u_star) + b0*10
-      data_star = c(xx[1],da)
+      data_star[1] = xx[1]
+      for (i in 2:n){
+        data_star[i] = b0 + 0.9*data_star[i-1] + sample(u,size=1,replace=TRUE)
+      }
+      data_star
     } %>%
       ols(.) %>%
       .["test"]
-    )
+  )
   t_RR = unlist(t_RR)
   t = ols(data)$test
   p_RR = sum(abs(t_RR)>abs(t))/B
