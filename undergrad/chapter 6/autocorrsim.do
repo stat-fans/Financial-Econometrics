@@ -7,7 +7,7 @@ syntax [, obs(integer 1) sigma(real 1) phi(real 1)]
     clear  
     set obs `obs' 
     gen x = rnormal(0,3)  
-	gen e = rnormal(0,`sigma')
+	gen e = rnormal(0,`sigma'/sqrt(1+`phi'^2))
 	gen elag = e[_n-1]
 	gen u2 = e - `phi'*elag
     gen u1  = rnormal(0,`sigma')  
@@ -19,7 +19,7 @@ syntax [, obs(integer 1) sigma(real 1) phi(real 1)]
 	return scalar b2 = _b[x]
     end 
 
-simulate beta1=r(b1) beta2=r(b2), reps(2000): autocorrsim, obs(1000) sigma(2) phi(2)
+simulate beta1=r(b1) beta2=r(b2), reps(2000): autocorrsim, obs(300) sigma(2) phi(2)
 sum beta1
 gen bias1 = abs(r(mean)-2)
 gen sd1 = r(sd)

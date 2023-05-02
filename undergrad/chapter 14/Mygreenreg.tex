@@ -1,0 +1,40 @@
+% 20 Feb 2023 10:46:45
+\documentclass{article}
+\usepackage{booktabs}
+\begin{document}
+
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{esttab\_Table: regression result}
+\begin{tabular*}{\hsize}{@{\hskip\tabcolsep\extracolsep\fill}l*{4}{c}}
+\toprule
+          &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+          &\multicolumn{1}{c}{OLS-1}&\multicolumn{1}{c}{OLS-2}&\multicolumn{1}{c}{OLS-3}&\multicolumn{1}{c}{OLS-4}\\
+\midrule
+treatvar  &    0.286\sym{***}&    0.266\sym{***}&    0.301\sym{***}&    0.187\sym{***}\\
+          &   (0.11)         &   (0.08)         &   (0.06)         &   (0.04)         \\
+pop       &                  &    0.767\sym{***}&    0.782\sym{***}&    0.432\sym{***}\\
+          &                  &   (0.05)         &   (0.04)         &   (0.07)         \\
+citywage  &                  &                  &    0.440\sym{***}&    0.075\sym{**} \\
+          &                  &                  &   (0.03)         &   (0.03)         \\
+pgdp      &                  &                  &                  &    0.346\sym{***}\\
+          &                  &                  &                  &   (0.07)         \\
+rsc       &                  &                  &                  &    0.374\sym{***}\\
+          &                  &                  &                  &   (0.05)         \\
+\_cons    &    3.344\sym{***}&   -1.154\sym{***}&   -2.836\sym{***}&   -8.680\sym{***}\\
+          &   (0.05)         &   (0.30)         &   (0.27)         &   (0.49)         \\
+\midrule
+\(R^{2}\) &    0.024         &    0.463         &    0.666         &    0.845         \\
+adj. \(R^{2}\)&    0.021         &    0.459         &    0.662         &    0.842         \\
+\textit{AIC}&  677.429         &  509.135         &  375.804         &  160.836         \\
+\textit{BIC}&  684.734         &  520.092         &  390.414         &  182.751         \\
+F         &    6.945         &  121.572         &  186.772         &  304.412         \\
+\(N\)     &      285         &      285         &      285         &      285         \\
+\bottomrule
+\multicolumn{5}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{5}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\end{tabular*}
+\end{table}
+
+\end{document}
+
