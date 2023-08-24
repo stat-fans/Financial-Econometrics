@@ -1,0 +1,8 @@
+library(Quandl)
+symbols <- c("FRED/GS3M","FRED/GS6M","FRED/GS1","FRED/GS3","FRED/GS5","FRED/GS10")
+data <- Quandl(symbols,start_date="1993-01-01",end_date="2022-12-31")
+data <- as.matrix(data[,-1])
+pca <- prcomp(data,scale=TRUE)
+summary(pca)
+library(factoextra)
+fviz_eig(pca,addlabels = TRUE,ylim = c(0, 100),main="Principal Component")
